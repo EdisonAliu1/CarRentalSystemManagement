@@ -11,7 +11,6 @@
 using System;
 using System.Reflection;
 
-[assembly: Microsoft.AspNetCore.Identity.UI.UIFrameworkAttribute("Bootstrap4")]
 [assembly: Microsoft.Extensions.Configuration.UserSecrets.UserSecretsIdAttribute("aspnet-DristRent-5C08826E-54B3-470E-9E14-9E94E8A370E0")]
 [assembly: System.Reflection.AssemblyCompanyAttribute("DristRent")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Release")]
