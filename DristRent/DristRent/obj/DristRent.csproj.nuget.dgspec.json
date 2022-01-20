@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\RYZEN\\Source\\Repos\\CarRentalSystemManagement\\DristRent\\DristRent\\DristRent.csproj": {}
+    "C:\\Users\\RYZEN\\source\\repos\\CarRentalSystemManagement\\DristRent\\DristRent\\DristRent.csproj": {}
   },
   "projects": {
-    "C:\\Users\\RYZEN\\Source\\Repos\\CarRentalSystemManagement\\DristRent\\DristRent\\DristRent.csproj": {
+    "C:\\Users\\RYZEN\\source\\repos\\CarRentalSystemManagement\\DristRent\\DristRent\\DristRent.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\RYZEN\\Source\\Repos\\CarRentalSystemManagement\\DristRent\\DristRent\\DristRent.csproj",
+        "projectUniqueName": "C:\\Users\\RYZEN\\source\\repos\\CarRentalSystemManagement\\DristRent\\DristRent\\DristRent.csproj",
         "projectName": "DristRent",
-        "projectPath": "C:\\Users\\RYZEN\\Source\\Repos\\CarRentalSystemManagement\\DristRent\\DristRent\\DristRent.csproj",
+        "projectPath": "C:\\Users\\RYZEN\\source\\repos\\CarRentalSystemManagement\\DristRent\\DristRent\\DristRent.csproj",
         "packagesPath": "C:\\Users\\RYZEN\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\RYZEN\\Source\\Repos\\CarRentalSystemManagement\\DristRent\\DristRent\\obj\\",
+        "outputPath": "C:\\Users\\RYZEN\\source\\repos\\CarRentalSystemManagement\\DristRent\\DristRent\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -55,13 +55,23 @@
               "target": "Package",
               "version": "[3.1.19, )"
             },
-            "Microsoft.EntityFrameworkCore.SqlServer": {
+            "Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation": {
               "target": "Package",
               "version": "[3.1.22, )"
             },
-            "Microsoft.EntityFrameworkCore.Tools": {
+            "Microsoft.EntityFrameworkCore.SqlServer": {
               "target": "Package",
-              "version": "[3.1.19, )"
+              "version": "[3.1.21, )"
+            },
+            "Microsoft.EntityFrameworkCore.Tools": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[3.1.21, )"
+            },
+            "Microsoft.VisualStudio.Web.CodeGeneration.Design": {
+              "target": "Package",
+              "version": "[3.1.5, )"
             }
           },
           "imports": [
@@ -82,7 +92,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.416\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.210\\RuntimeIdentifierGraph.json"
         }
       }
     }
