@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DristRent.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20220120201657_Cars")]
+    [Migration("20220121021802_Cars")]
     partial class Cars
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\RYZEN\\source\\repos\\CarRentalSystemManagement\\DristRent\\DristRent\\DristRent.csproj": {}
+    "C:\\Users\\RYZEN\\Source\\Repos\\CarRentalSystemManagement\\DristRent\\DristRent\\DristRent.csproj": {}
   },
   "projects": {
-    "C:\\Users\\RYZEN\\source\\repos\\CarRentalSystemManagement\\DristRent\\DristRent\\DristRent.csproj": {
+    "C:\\Users\\RYZEN\\Source\\Repos\\CarRentalSystemManagement\\DristRent\\DristRent\\DristRent.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\RYZEN\\source\\repos\\CarRentalSystemManagement\\DristRent\\DristRent\\DristRent.csproj",
+        "projectUniqueName": "C:\\Users\\RYZEN\\Source\\Repos\\CarRentalSystemManagement\\DristRent\\DristRent\\DristRent.csproj",
         "projectName": "DristRent",
-        "projectPath": "C:\\Users\\RYZEN\\source\\repos\\CarRentalSystemManagement\\DristRent\\DristRent\\DristRent.csproj",
+        "projectPath": "C:\\Users\\RYZEN\\Source\\Repos\\CarRentalSystemManagement\\DristRent\\DristRent\\DristRent.csproj",
         "packagesPath": "C:\\Users\\RYZEN\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\RYZEN\\source\\repos\\CarRentalSystemManagement\\DristRent\\DristRent\\obj\\",
+        "outputPath": "C:\\Users\\RYZEN\\Source\\Repos\\CarRentalSystemManagement\\DristRent\\DristRent\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
