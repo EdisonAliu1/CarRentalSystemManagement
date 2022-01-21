@@ -1,7 +1,10 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\DristRent",
+    "\\DristRent\\DristRent",
+    "\\DristRent\\DristRent\\Data"
   ],
-  "SelectedNode": "\\C:\\Users\\RYZEN\\Source\\Repos\\CarRentalSystemManagement",
+  "SelectedNode": "\\DristRent\\DristRent\\Data\\ApplicationDbContext.cs",
   "PreviewInSolutionExplorer": false
 }
