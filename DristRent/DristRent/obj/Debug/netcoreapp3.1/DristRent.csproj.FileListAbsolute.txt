@@ -1032,3 +1032,15 @@ C:\Users\krasn\source\repos\CarRentalSystem\DristRent\DristRent\obj\Debug\netcor
 C:\Users\krasn\source\repos\CarRentalSystem\DristRent\DristRent\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\_ViewStart.cshtml.g.cs
 C:\Users\krasn\source\repos\CarRentalSystem\DristRent\DristRent\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\Pages\Details.cshtml.g.cs
 C:\Users\krasn\source\repos\CarRentalSystem\DristRent\DristRent\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\Pages\Create.cshtml.g.cs
+C:\Users\RYZEN\source\repos\CarRentalSystemManagement\DristRent\DristRent\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\Pages\Create.cshtml.g.cs
+C:\Users\RYZEN\source\repos\CarRentalSystemManagement\DristRent\DristRent\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\Pages\Details.cshtml.g.cs
+C:\Users\RYZEN\source\repos\CarRentalSystemManagement\DristRent\DristRent\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\Pages\Index.cshtml.g.cs
+C:\Users\RYZEN\source\repos\CarRentalSystemManagement\DristRent\DristRent\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\Shared\Error.cshtml.g.cs
+C:\Users\RYZEN\source\repos\CarRentalSystemManagement\DristRent\DristRent\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\Shared\_Layout.cshtml.g.cs
+C:\Users\RYZEN\source\repos\CarRentalSystemManagement\DristRent\DristRent\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\Shared\_LoginPartial.cshtml.g.cs
+C:\Users\RYZEN\source\repos\CarRentalSystemManagement\DristRent\DristRent\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\Shared\_ValidationScriptsPartial.cshtml.g.cs
+C:\Users\RYZEN\source\repos\CarRentalSystemManagement\DristRent\DristRent\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\_ViewImports.cshtml.g.cs
+C:\Users\RYZEN\source\repos\CarRentalSystemManagement\DristRent\DristRent\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\_ViewStart.cshtml.g.cs
+C:\Users\RYZEN\source\repos\CarRentalSystemManagement\DristRent\DristRent\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\Pages\Delete.cshtml.g.cs
+C:\Users\RYZEN\source\repos\CarRentalSystemManagement\DristRent\DristRent\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\Pages\Edit.cshtml.g.cs
+C:\Users\RYZEN\source\repos\CarRentalSystemManagement\DristRent\DristRent\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\Shared\_NotificationPartial.cshtml.g.cs
