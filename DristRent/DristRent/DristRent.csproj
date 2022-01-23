@@ -12,6 +12,12 @@
     <Compile Remove="Data\Migrations\20220116021012_InitialMigrat.Designer.cs" />
     <Compile Remove="Data\Migrations\20220116021120_InitialMigrate.cs" />
     <Compile Remove="Data\Migrations\20220116021120_InitialMigrate.Designer.cs" />
+    <Compile Remove="Data\Migrations\20220123022601_AddPages.cs" />
+    <Compile Remove="Data\Migrations\20220123022601_AddPages.Designer.cs" />
+    <Compile Remove="Data\Migrations\20220123040930_Pages.cs" />
+    <Compile Remove="Data\Migrations\20220123040930_Pages.Designer.cs" />
+    <Compile Remove="Data\Migrations\20220123043026_Pages.cs" />
+    <Compile Remove="Data\Migrations\20220123043026_Pages.Designer.cs" />
   </ItemGroup>
 
   <ItemGroup>
@@ -25,6 +31,10 @@
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="3.1.5" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Controllers\" />
   </ItemGroup>
 
 </Project>

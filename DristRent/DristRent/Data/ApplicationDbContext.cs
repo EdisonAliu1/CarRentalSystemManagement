@@ -22,6 +22,7 @@ namespace DristRent.Data
             : base(options)
         {
         }
+        public DbSet<Page> Pages { get; set; }
         
     }
 }
