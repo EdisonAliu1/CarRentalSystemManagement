@@ -24,6 +24,7 @@ namespace DristRent.Areas.Admin.Controllers
         public async Task<IActionResult> Index()
         {
             return View(await _context.Pages.ToListAsync());
+
         }
 
         // GET: Admin/Pages/Details/5
@@ -54,7 +55,7 @@ namespace DristRent.Areas.Admin.Controllers
       
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Title,Slug,Content,Sorting")] Page page)
+        public async Task<IActionResult> Create( Page page)
         {
             if (ModelState.IsValid)
             {
@@ -71,7 +72,7 @@ namespace DristRent.Areas.Admin.Controllers
                 
                 TempData["Success"] = "The page has been added";
 
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction("Index");
                
                     }
             return View(page);
