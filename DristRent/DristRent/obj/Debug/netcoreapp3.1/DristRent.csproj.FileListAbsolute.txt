@@ -1044,3 +1044,12 @@ C:\Users\RYZEN\source\repos\CarRentalSystemManagement\DristRent\DristRent\obj\De
 C:\Users\RYZEN\source\repos\CarRentalSystemManagement\DristRent\DristRent\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\Pages\Delete.cshtml.g.cs
 C:\Users\RYZEN\source\repos\CarRentalSystemManagement\DristRent\DristRent\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\Pages\Edit.cshtml.g.cs
 C:\Users\RYZEN\source\repos\CarRentalSystemManagement\DristRent\DristRent\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\Shared\_NotificationPartial.cshtml.g.cs
+C:\Users\krasn\source\repos\CarRentalSystem\DristRent\DristRent\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\Pages\Delete.cshtml.g.cs
+C:\Users\krasn\source\repos\CarRentalSystem\DristRent\DristRent\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\Pages\Edit.cshtml.g.cs
+C:\Users\krasn\source\repos\CarRentalSystem\DristRent\DristRent\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\Shared\_NotificationPartial.cshtml.g.cs
+C:\Users\krasn\source\repos\CarRentalSystem\DristRent\DristRent\bin\Debug\netcoreapp3.1\libman.json
+C:\Users\krasn\source\repos\CarRentalSystem\DristRent\DristRent\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\Categories\Create.cshtml.g.cs
+C:\Users\krasn\source\repos\CarRentalSystem\DristRent\DristRent\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\Categories\Delete.cshtml.g.cs
+C:\Users\krasn\source\repos\CarRentalSystem\DristRent\DristRent\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\Categories\Details.cshtml.g.cs
+C:\Users\krasn\source\repos\CarRentalSystem\DristRent\DristRent\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\Categories\Edit.cshtml.g.cs
+C:\Users\krasn\source\repos\CarRentalSystem\DristRent\DristRent\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\Categories\Index.cshtml.g.cs
