@@ -86,7 +86,7 @@ namespace DristRent.Areas.Admin.Controllers
             }
            
 
-            var page = await _context.Pages.FindAsync(id);
+            Page page = await _context.Pages.FindAsync(id);
             if (page == null)
             {
                 return NotFound();
@@ -95,46 +95,28 @@ namespace DristRent.Areas.Admin.Controllers
         }
 
         // POST: Admin/Pages/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
-        // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Title,Slug,Content,Sorting")] Page page)
+        public async Task<IActionResult> Edit(Page page)
         {
-            page.Slug = page.Title.ToLower().Replace(" ", "-");
-            page.Sorting = 100;
-            var slug = await _context.Pages.FirstOrDefaultAsync(x => x.Slug == page.Slug);
-            if (slug != null)
-            {
-                ModelState.AddModelError("", "The title already exists. ");
-                return View(page);
-            }
-            if (id != page.Id)
-            {
-                return NotFound();
-            }
-
             if (ModelState.IsValid)
             {
-                try
+                page.Slug =page.Id ==1 ? "home": page.Title.ToLower().Replace(" ", "-");
+               
+                var slug = await _context.Pages.Where(x => x.Id == page.Id).FirstOrDefaultAsync(x => x.Slug == page.Slug);
+                if (slug != null)
                 {
-                    _context.Update(page);
-                    await _context.SaveChangesAsync();
-                    TempData["Success"] = "Page has been edited!";
+                    ModelState.AddModelError("", "The title already exists. ");
+                    return View(page);
                 }
-                catch (DbUpdateConcurrencyException)
-                {
-                    if (!PageExists(page.Id))
-                    {
-                        return NotFound();
-                    }
-                    else
-                    {
-                        throw;
-                    }
-                }
-          
+                _context.Update(page);
+                await _context.SaveChangesAsync();
+
+                TempData["Success"] = "The page has been edited";
+
                 return RedirectToAction(nameof(Index));
+
             }
             return View(page);
         }
