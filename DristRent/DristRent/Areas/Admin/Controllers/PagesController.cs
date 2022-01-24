@@ -13,27 +13,29 @@ namespace DristRent.Areas.Admin.Controllers
     [Area("Admin")]
     public class PagesController : Controller
     {
-        private readonly ApplicationDbContext context;
+        private readonly ApplicationDbContext _context;
 
         public PagesController(ApplicationDbContext context)
         {
-            this.context = context;
+            _context = context;
         }
 
-        // GET /admin/pages
+        // GET: Admin/Pages
         public async Task<IActionResult> Index()
         {
-            IQueryable<Page> pages = from p in context.Pages orderby p.Sorting select p;
-
-            List<Page> pagesList = await pages.ToListAsync();
-
-            return View(pagesList);
+            return View(await _context.Pages.ToListAsync());
         }
 
-        // GET /admin/pages/details/5
-        public async Task<IActionResult> Details(int id)
+        // GET: Admin/Pages/Details/5
+        public async Task<IActionResult> Details(int? id)
         {
-            Page page = await context.Pages.FirstOrDefaultAsync(x => x.Id == id);
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var page = await _context.Pages
+                .FirstOrDefaultAsync(m => m.Id == id);
             if (page == null)
             {
                 return NotFound();
@@ -42,112 +44,133 @@ namespace DristRent.Areas.Admin.Controllers
             return View(page);
         }
 
-        // GET /admin/pages/create
-        public IActionResult Create() => View();
+        // GET: Admin/Pages/Create
+        public IActionResult Create()
+        {
+            return View();
+        }
 
-        // POST /admin/pages/create
+        // POST: Admin/Pages/Create
+      
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create(Page page)
+        public async Task<IActionResult> Create([Bind("Id,Title,Slug,Content,Sorting")] Page page)
         {
             if (ModelState.IsValid)
             {
                 page.Slug = page.Title.ToLower().Replace(" ", "-");
                 page.Sorting = 100;
-
-                var slug = await context.Pages.FirstOrDefaultAsync(x => x.Slug == page.Slug);
-                if (slug != null)
+                var slug = await _context.Pages.FirstOrDefaultAsync(x => x.Slug == page.Slug);
+                if(slug != null)
                 {
-                    ModelState.AddModelError("", "The page already exists.");
+                    ModelState.AddModelError("", "The title already exists. ");
                     return View(page);
-                }
+                        }
+                _context.Add(page);
+                await _context.SaveChangesAsync();
+                
+                TempData["Success"] = "The page has been added";
 
-                context.Add(page);
-                await context.SaveChangesAsync();
-
-                TempData["Success"] = "The page has been added!";
-
-                return RedirectToAction("Index");
-            }
-
+                return RedirectToAction(nameof(Index));
+               
+                    }
             return View(page);
         }
 
-        // GET /admin/pages/edit/5
-        public async Task<IActionResult> Edit(int id)
+        // GET: Admin/Pages/Edit/5
+        public async Task<IActionResult> Edit(int? id)
         {
-            Page page = await context.Pages.FindAsync(id);
+            if (id == null)
+            {
+                return NotFound();
+            }
+           
+
+            Page page = await _context.Pages.FindAsync(id);
             if (page == null)
             {
                 return NotFound();
             }
-
             return View(page);
         }
 
-        // POST /admin/pages/edit
+        // POST: Admin/Pages/Edit/5
+
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(Page page)
         {
             if (ModelState.IsValid)
             {
-                page.Slug = page.Id == 1 ? "home" : page.Title.ToLower().Replace(" ", "-");
-
-                var slug = await context.Pages.Where(x => x.Id != page.Id).FirstOrDefaultAsync(x => x.Slug == page.Slug);
+                page.Slug =page.Id ==1 ? "home": page.Title.ToLower().Replace(" ", "-");
+               
+                var slug = await _context.Pages.Where(x => x.Id == page.Id).FirstOrDefaultAsync(x => x.Slug == page.Slug);
                 if (slug != null)
                 {
-                    ModelState.AddModelError("", "The page already exists.");
+                    ModelState.AddModelError("", "The title already exists. ");
                     return View(page);
                 }
+                _context.Update(page);
+                await _context.SaveChangesAsync();
 
-                context.Update(page);
-                await context.SaveChangesAsync();
+                TempData["Success"] = "The page has been edited";
 
-                TempData["Success"] = "The page has been edited!";
+                return RedirectToAction(nameof(Index));
 
-                return RedirectToAction("Edit", new { id = page.Id });
+            }
+            return View(page);
+        }
+
+        // GET: Admin/Pages/Delete/5
+        public async Task<IActionResult> Delete(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var page = await _context.Pages
+                .FirstOrDefaultAsync(m => m.Id == id);
+            if (page == null)
+            {
+                return NotFound();
             }
 
             return View(page);
         }
 
-        // GET /admin/pages/delete/5
-        public async Task<IActionResult> Delete(int id)
+        // POST: Admin/Pages/Delete/5
+        [HttpPost, ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            Page page = await context.Pages.FindAsync(id);
-
-            if (page == null)
-            {
-                TempData["Error"] = "The page does not exist!";
-            }
-            else
-            {
-                context.Pages.Remove(page);
-                await context.SaveChangesAsync();
-
-                TempData["Success"] = "The page has been deleted!";
-            }
-
-            return RedirectToAction("Index");
+            var page = await _context.Pages.FindAsync(id);
+            _context.Pages.Remove(page);
+            await _context.SaveChangesAsync();
+            TempData["Success"] = "Page has been deleted!";
+            return RedirectToAction(nameof(Index));
         }
 
-        // POST /admin/pages/reorder
-        [HttpPost]
-        public async Task<IActionResult> Reorder(int[] id)
+        private bool PageExists(int id)
         {
-            //Home is first so it's 0
+            return _context.Pages.Any(e => e.Id == id);
+        }
+        // POST: Admin/Pages/Reorder
+
+        [HttpPost]
+        
+        public async Task<IActionResult> Reorder(int [] id)
+        {
             int count = 1;
 
             foreach (var pageId in id)
             {
-                Page page = await context.Pages.FindAsync(pageId);
-                page.Sorting = count; 
-                context.Update(page);
-                await context.SaveChangesAsync();
+                Page page = await _context.Pages.FindAsync(pageId);
+                page.Sorting = count;
+                _context.Update(page);
+                await _context.SaveChangesAsync();
                 count++;
             }
-
             return Ok();
         }
     }

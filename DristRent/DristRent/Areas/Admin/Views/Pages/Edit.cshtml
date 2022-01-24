@@ -14,26 +14,19 @@
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="Id" />
             <input type="hidden" asp-for="Sorting" />
+            <input type="hidden" asp-for="Slug" />
             <div class="form-group">
                 <label asp-for="Title" class="control-label"></label>
                 <input asp-for="Title" class="form-control" />
                 <span asp-validation-for="Title" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <label asp-for="Slug" class="control-label"></label>
-                <input asp-for="Slug" class="form-control" />
-                <span asp-validation-for="Slug" class="text-danger"></span>
-            </div>
+
             <div class="form-group">
                 <label asp-for="Content" class="control-label"></label>
-                <textarea asp-for="Content" class="form-control" ></textarea>
+                <textarea asp-for="Content" class="form-control"></textarea>
                 <span asp-validation-for="Content" class="text-danger"></span>
             </div>
-            <div class="form-group">
-            <label asp-for="Sorting" class="control-label"></label>
-            <input asp-for="Sorting" class="form-control" />
-            <span asp-validation-for="Sorting" class="text-danger"></span>
-        </div>
+
             <div class="form-group">
                 <input type="submit" value="Edit" class="btn btn-primary" />
             </div>
@@ -47,9 +40,7 @@
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
-
 <script>
     CKEDITOR.replace("Content");
 </script>
 }
-

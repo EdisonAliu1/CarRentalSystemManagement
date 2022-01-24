@@ -19,7 +19,7 @@
                 @Html.DisplayNameFor(model => model.Slug)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Content)
+                @Html.DisplayNameFor(model =>model.Content);
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Sorting)
@@ -30,8 +30,7 @@
     <tbody>
         @foreach (var item in Model)
         {
-
-            <tr id="id_@item.Id" class="@item.Slug">
+            <tr id="id_@item.Id" class="@item.Slug ">
                 <td>
                     @Html.DisplayFor(modelItem => item.Title)
                 </td>
@@ -49,7 +48,7 @@
                     <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
                     @if (item.Slug != "home")
                     {
-                        <a class="confirmDeletion" asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                        <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
                     }
                 </td>
             </tr>
@@ -57,16 +56,16 @@
     </tbody>
 </table>
 @section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
     <script>
         $("table#pages tbody").sortable({
             items: "tr:not(.home)",
             placeholder: "ui-state-highlight",
             update: function () {
                 let ids = $("table#pages tbody").sortable("serialize");
-                let url = "/admin/pages/reorder";
-
+                let url = "admin/pages/reorder";
                 $.post(url, ids, function () { });
             }
-        })
+        });
     </script>
 }
