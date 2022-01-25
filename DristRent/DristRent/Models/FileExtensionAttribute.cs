@@ -21,7 +21,7 @@ namespace DristRent.Models
             {
                 var extension = Path.GetExtension(file.FileName);
 
-                string[] extensions = { "jpg", "png" };
+                string[] extensions = { "jpg", "png"};
                 
                 bool result = extensions.Any(x => extension.EndsWith(x));
 
@@ -29,10 +29,13 @@ namespace DristRent.Models
                 {
                     return new ValidationResult(GetErrorMessage());
                 }
+
             }
             return ValidationResult.Success;
 
         }
+
+
 
         private string GetErrorMessage()
         {

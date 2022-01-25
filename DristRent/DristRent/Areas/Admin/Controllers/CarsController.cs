@@ -67,7 +67,7 @@ namespace DristRent.Areas.Admin
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,City,Type,CategoryId,Price,PlateNum,Image")] Car car)  
+        public async Task<IActionResult> Create(Car car)  
         {
             if (ModelState.IsValid)
             {
@@ -94,31 +94,7 @@ namespace DristRent.Areas.Admin
             return View(car);
         }
 
-        //[HttpPost]
-        //[ValidateAntiForgeryToken]
-        //public async Task<IActionResult> Create(Car car)
-        //{
-        //    if (ModelState.IsValid)
-        //    {
-
-        //      //  var slug = await _context.Pages.FirstOrDefaultAsync(x => x.Slug == page.Slug);
-        //        if (slug != null)
-        //        {
-        //            ModelState.AddModelError("", "The title already exists. ");
-        //            return View(page);
-        //        }
-        //        _context.Add(page);
-        //        await _context.SaveChangesAsync();
-
-        //        TempData["Success"] = "The page has been added";
-
-        //        return RedirectToAction("Index");
-
-        //    }
-        //    return View(page);
-        //}
-
-
+        
         // GET: Admin/Cars/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
