@@ -24,10 +24,16 @@ namespace DristRent.Areas.Admin
         }
 
         // GET: Admin/Cars
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(int p=1)
         {
-            var applicationDbContext = _context.Cars.OrderByDescending(x=>x.Id).Include(c => c.category);
-            return View(await applicationDbContext.ToListAsync());
+            int pageSize = 6;
+            var cars = _context.Cars.OrderByDescending(x => x.Id)
+                .Include(c => c.category)
+                .Skip((p-1)*pageSize)
+                .Take(pageSize);
+
+            //var applicationDbContext = _context.Cars.OrderByDescending(x=>x.Id).Include(c => c.category);
+            return View(await cars.ToListAsync());
         }
 
         // GET: Admin/Cars/Details/5
@@ -61,9 +67,7 @@ namespace DristRent.Areas.Admin
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,City,Type,CategoryId,Price,PlateNum,Image")] Car car)
-            
-         
+        public async Task<IActionResult> Create([Bind("Id,City,Type,CategoryId,Price,PlateNum,Image")] Car car)  
         {
             if (ModelState.IsValid)
             {
@@ -86,7 +90,7 @@ namespace DristRent.Areas.Admin
                 TempData["Success"] = "The car has been added";
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["CategoryId"] = new SelectList(_context.Categories, "Id", "Name", car.CategoryId);
+            //ViewData["CategoryId"] = new SelectList(_context.Categories, "Id", "Name", car.CategoryId);
             return View(car);
         }
 
