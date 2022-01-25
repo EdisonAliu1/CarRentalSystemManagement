@@ -7,7 +7,7 @@ using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace DristRent.Infrastructure
+namespace DristRent.Models
 {
     public class FileExtensionAttribute : ValidationAttribute
     {
@@ -21,7 +21,7 @@ namespace DristRent.Infrastructure
             {
                 var extension = Path.GetExtension(file.FileName);
 
-                string[] extensions = { "jpg", "png" };
+                string[] extensions = { "jpg", "png"};
                 
                 bool result = extensions.Any(x => extension.EndsWith(x));
 
@@ -29,12 +29,13 @@ namespace DristRent.Infrastructure
                 {
                     return new ValidationResult(GetErrorMessage());
                 }
-                
+
             }
             return ValidationResult.Success;
 
-
         }
+
+
 
         private string GetErrorMessage()
         {
