@@ -7,6 +7,8 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using DristRent.Data;
 using DristRent.Models;
+using Microsoft.AspNetCore.Hosting;
+using System.IO;
 
 namespace DristRent.Areas.Admin
 {
@@ -14,16 +16,17 @@ namespace DristRent.Areas.Admin
     public class CarsController : Controller
     {
         private readonly ApplicationDbContext _context;
-
-        public CarsController(ApplicationDbContext context)
+        private readonly IWebHostEnvironment webHostEnvironment;
+        public CarsController(ApplicationDbContext context, IWebHostEnvironment webHostEnvironment)
         {
             _context = context;
+            this.webHostEnvironment = webHostEnvironment;
         }
 
         // GET: Admin/Cars
         public async Task<IActionResult> Index()
         {
-            var applicationDbContext = _context.Cars.Include(c => c.category);
+            var applicationDbContext = _context.Cars.OrderByDescending(x=>x.Id).Include(c => c.category);
             return View(await applicationDbContext.ToListAsync());
         }
 
@@ -49,7 +52,7 @@ namespace DristRent.Areas.Admin
         // GET: Admin/Cars/Create
         public IActionResult Create()
         {
-            ViewData["CategoryId"] = new SelectList(_context.Categories, "Id", "Name");
+            ViewData["CategoryId"] = new SelectList(_context.Categories.OrderBy(x=>x.Sorting), "Id", "Name");
             return View();
         }
 
@@ -59,16 +62,58 @@ namespace DristRent.Areas.Admin
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("Id,City,Type,CategoryId,Price,PlateNum,Image")] Car car)
+            
+         
         {
             if (ModelState.IsValid)
             {
+                string imageName = "noimage.png";
+                if(car.ImageUpload != null)
+                {
+                    string uploadsDir = Path.Combine(webHostEnvironment.WebRootPath, "media/cars");
+                    //if we upload the same pic it is not gonna allow us
+                    imageName = Guid.NewGuid().ToString() + "_" + car.ImageUpload.FileName;
+                    string filePath = Path.Combine(uploadsDir, imageName);
+                    FileStream fs = new FileStream(filePath, FileMode.Create);
+                    await car.ImageUpload.CopyToAsync(fs);
+                    fs.Close();
+
+                }
+                car.Image = imageName;
+
                 _context.Add(car);
                 await _context.SaveChangesAsync();
+                TempData["Success"] = "The car has been added";
                 return RedirectToAction(nameof(Index));
             }
             ViewData["CategoryId"] = new SelectList(_context.Categories, "Id", "Name", car.CategoryId);
             return View(car);
         }
+
+        //[HttpPost]
+        //[ValidateAntiForgeryToken]
+        //public async Task<IActionResult> Create(Car car)
+        //{
+        //    if (ModelState.IsValid)
+        //    {
+
+        //      //  var slug = await _context.Pages.FirstOrDefaultAsync(x => x.Slug == page.Slug);
+        //        if (slug != null)
+        //        {
+        //            ModelState.AddModelError("", "The title already exists. ");
+        //            return View(page);
+        //        }
+        //        _context.Add(page);
+        //        await _context.SaveChangesAsync();
+
+        //        TempData["Success"] = "The page has been added";
+
+        //        return RedirectToAction("Index");
+
+        //    }
+        //    return View(page);
+        //}
+
 
         // GET: Admin/Cars/Edit/5
         public async Task<IActionResult> Edit(int? id)
