@@ -44,10 +44,10 @@ namespace DristRent.Areas.Admin
         // GET: Admin/Cars/Details/5
         public async Task<IActionResult> Details(int id)
         {
-            if (id == null)
-            {
-                return NotFound();
-            }
+            //if (id == null)
+            //{
+            //    return NotFound();
+            //}
 
             var car = await _context.Cars
                 .Include(c => c.category)
@@ -86,6 +86,7 @@ namespace DristRent.Areas.Admin
                     FileStream fs = new FileStream(filePath, FileMode.Create);
                     await car.ImageUpload.CopyToAsync(fs);
                     fs.Close();
+                    //car.Image = imageName;
 
                 }
                 car.Image = imageName;
