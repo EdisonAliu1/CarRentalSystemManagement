@@ -8912,19 +8912,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\krasn\\.nuget\\packages\\": {}
+    "C:\\Users\\DELL\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\krasn\\Source\\Repos\\CarRentalSystemManagement\\DristRent\\DristRent\\DristRent.csproj",
+      "projectUniqueName": "C:\\Users\\DELL\\source\\repos\\CarRental\\DristRent\\DristRent\\DristRent.csproj",
       "projectName": "DristRent",
-      "projectPath": "C:\\Users\\krasn\\Source\\Repos\\CarRentalSystemManagement\\DristRent\\DristRent\\DristRent.csproj",
-      "packagesPath": "C:\\Users\\krasn\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\krasn\\Source\\Repos\\CarRentalSystemManagement\\DristRent\\DristRent\\obj\\",
+      "projectPath": "C:\\Users\\DELL\\source\\repos\\CarRental\\DristRent\\DristRent\\DristRent.csproj",
+      "packagesPath": "C:\\Users\\DELL\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\DELL\\source\\repos\\CarRental\\DristRent\\DristRent\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\krasn\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\DELL\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -8999,7 +8999,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.402\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.404\\RuntimeIdentifierGraph.json"
       }
     }
   }
