@@ -7,9 +7,11 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using DristRent.Data;
 using DristRent.Models;
-using Microsoft.AspNetCore.Hosting;
-using System.IO;
 using DristRent.Infrastructure;
+
+using System.IO;
+
+using Microsoft.AspNetCore.Hosting;
 
 namespace DristRent.Areas.Admin
 {
@@ -79,24 +81,26 @@ namespace DristRent.Areas.Admin
                 string imageName = "noimage.png";
                 if(car.ImageUpload != null)
                 {
-                    string uploadsDir = Path.Combine(webHostEnvironment.WebRootPath, "/media/cars");
+                    string uploadsDir = Path.Combine(webHostEnvironment.WebRootPath,"media/cars");
                     //if we upload the same pic it is not gonna allow us
                     imageName = Guid.NewGuid().ToString() + "_" + car.ImageUpload.FileName;
                     string filePath = Path.Combine(uploadsDir, imageName);
                     FileStream fs = new FileStream(filePath, FileMode.Create);
                     await car.ImageUpload.CopyToAsync(fs);
                     fs.Close();
-                    //car.Image = imageName;
 
+                   
                 }
                 car.Image = imageName;
 
                 _context.Add(car);
+                
                 await _context.SaveChangesAsync();
+                
                 TempData["Success"] = "The car has been added";
                 return RedirectToAction(nameof(Index));
             }
-            //ViewData["CategoryId"] = new SelectList(_context.Categories, "Id", "Name", car.CategoryId);
+            
             return View(car);
         }
 

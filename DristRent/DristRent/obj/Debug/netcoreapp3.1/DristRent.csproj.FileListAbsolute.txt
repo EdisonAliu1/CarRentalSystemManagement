@@ -1058,7 +1058,6 @@ C:\Users\RYZEN\source\repos\CarRentalSystemManagement\DristRent\DristRent\obj\De
 C:\Users\RYZEN\source\repos\CarRentalSystemManagement\DristRent\DristRent\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\Categories\Details.cshtml.g.cs
 C:\Users\RYZEN\source\repos\CarRentalSystemManagement\DristRent\DristRent\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\Categories\Edit.cshtml.g.cs
 C:\Users\RYZEN\source\repos\CarRentalSystemManagement\DristRent\DristRent\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\Categories\Index.cshtml.g.cs
-C:\Users\RYZEN\source\repos\CarRentalSystemManagement\DristRent\DristRent\obj\Debug\netcoreapp3.1\DristRent.csproj.AssemblyReference.cache
 C:\Users\krasn\Source\Repos\CarRentalSystemManagement\DristRent\DristRent\bin\Debug\netcoreapp3.1\appsettings.Development.json
 C:\Users\krasn\Source\Repos\CarRentalSystemManagement\DristRent\DristRent\bin\Debug\netcoreapp3.1\appsettings.json
 C:\Users\krasn\Source\Repos\CarRentalSystemManagement\DristRent\DristRent\bin\Debug\netcoreapp3.1\libman.json
@@ -2420,3 +2419,4 @@ C:\Users\RYZEN\source\repos\CarRentalSystemManagement\DristRent\DristRent\obj\De
 C:\Users\RYZEN\source\repos\CarRentalSystemManagement\DristRent\DristRent\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\Cars\Details.cshtml.g.cs
 C:\Users\RYZEN\source\repos\CarRentalSystemManagement\DristRent\DristRent\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\Cars\Edit.cshtml.g.cs
 C:\Users\RYZEN\source\repos\CarRentalSystemManagement\DristRent\DristRent\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\Cars\Index.cshtml.g.cs
+C:\Users\RYZEN\source\repos\CarRentalSystemManagement\DristRent\DristRent\obj\Debug\netcoreapp3.1\DristRent.csproj.AssemblyReference.cache

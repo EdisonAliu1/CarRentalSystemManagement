@@ -27,6 +27,10 @@
     <Compile Remove="Data\Migrations\20220123043026_Pages.Designer.cs" />
     <Compile Remove="Data\Migrations\20220125010643_AddCarToDb.cs" />
     <Compile Remove="Data\Migrations\20220125010643_AddCarToDb.Designer.cs" />
+    <Compile Remove="Data\Migrations\20220125235325_Cars.cs" />
+    <Compile Remove="Data\Migrations\20220125235325_Cars.Designer.cs" />
+    <Compile Remove="Data\Migrations\20220125235423_Cars.cs" />
+    <Compile Remove="Data\Migrations\20220125235423_Cars.Designer.cs" />
   </ItemGroup>
 
   <ItemGroup>

@@ -7,13 +7,13 @@ using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace DristRent.Models
+namespace DristRent.Infrastructure
 {
     public class FileExtensionAttribute : ValidationAttribute
     {
         protected override ValidationResult IsValid(object value, ValidationContext validationContext)
         {
-            //var context = (ApplicationDbContext)validationContext.GetService(typeof(ApplicationDbContext));
+            ;
 
             var file = value as IFormFile;
 

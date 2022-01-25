@@ -2,7 +2,7 @@
 
 namespace DristRent.Data.Migrations
 {
-    public partial class AddCarToDb : Migration
+    public partial class Cars : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
