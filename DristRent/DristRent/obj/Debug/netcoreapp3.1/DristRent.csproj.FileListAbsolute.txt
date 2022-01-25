@@ -2416,3 +2416,8 @@ C:\Users\krasn\Source\Repos\CarRentalSystemManagement2\DristRent\DristRent\obj\D
 C:\Users\krasn\Source\Repos\CarRentalSystemManagement2\DristRent\DristRent\obj\Debug\netcoreapp3.1\DristRent.dll
 C:\Users\krasn\Source\Repos\CarRentalSystemManagement2\DristRent\DristRent\obj\Debug\netcoreapp3.1\DristRent.pdb
 C:\Users\krasn\Source\Repos\CarRentalSystemManagement2\DristRent\DristRent\obj\Debug\netcoreapp3.1\DristRent.genruntimeconfig.cache
+C:\Users\RYZEN\source\repos\CarRentalSystemManagement\DristRent\DristRent\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\Cars\Create.cshtml.g.cs
+C:\Users\RYZEN\source\repos\CarRentalSystemManagement\DristRent\DristRent\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\Cars\Delete.cshtml.g.cs
+C:\Users\RYZEN\source\repos\CarRentalSystemManagement\DristRent\DristRent\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\Cars\Details.cshtml.g.cs
+C:\Users\RYZEN\source\repos\CarRentalSystemManagement\DristRent\DristRent\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\Cars\Edit.cshtml.g.cs
+C:\Users\RYZEN\source\repos\CarRentalSystemManagement\DristRent\DristRent\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\Cars\Index.cshtml.g.cs

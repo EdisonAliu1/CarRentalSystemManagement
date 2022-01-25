@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using DristRent.Infrastructure;
+using Microsoft.AspNetCore.Http;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -26,8 +27,8 @@ namespace DristRent.Models
         [ForeignKey("CategoryId")]
         public virtual Category category { get; set; }
         
-        //Does not have to do anything with this database table
-        [NotMapped] //or add another view to handle the images
+       
+        [NotMapped] 
         [FileExtension]
 
         public IFormFile ImageUpload { get; set; }

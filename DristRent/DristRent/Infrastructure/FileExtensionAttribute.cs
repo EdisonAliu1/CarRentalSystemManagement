@@ -7,7 +7,7 @@ using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace DristRent.Models
+namespace DristRent.Infrastructure
 {
     public class FileExtensionAttribute : ValidationAttribute
     {
@@ -29,8 +29,10 @@ namespace DristRent.Models
                 {
                     return new ValidationResult(GetErrorMessage());
                 }
+                
             }
             return ValidationResult.Success;
+
 
         }
 

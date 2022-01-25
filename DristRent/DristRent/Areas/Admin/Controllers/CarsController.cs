@@ -9,6 +9,7 @@ using DristRent.Data;
 using DristRent.Models;
 using Microsoft.AspNetCore.Hosting;
 using System.IO;
+using DristRent.Infrastructure;
 
 namespace DristRent.Areas.Admin
 {
@@ -26,18 +27,22 @@ namespace DristRent.Areas.Admin
         // GET: Admin/Cars
         public async Task<IActionResult> Index(int p=1)
         {
-            int pageSize = 6;
+            int pageSize = 3;
             var cars = _context.Cars.OrderByDescending(x => x.Id)
                 .Include(c => c.category)
-                .Skip((p-1)*pageSize)
+                .Skip((p - 1) * pageSize)
                 .Take(pageSize);
 
-            //var applicationDbContext = _context.Cars.OrderByDescending(x=>x.Id).Include(c => c.category);
+            ViewBag.PageNumber = p;
+            ViewBag.PageRange = pageSize;
+            ViewBag.TotalPages = (int)Math.Ceiling((decimal)_context.Cars.Count() / pageSize);
+          
+          
             return View(await cars.ToListAsync());
         }
 
         // GET: Admin/Cars/Details/5
-        public async Task<IActionResult> Details(int? id)
+        public async Task<IActionResult> Details(int id)
         {
             if (id == null)
             {
@@ -74,7 +79,7 @@ namespace DristRent.Areas.Admin
                 string imageName = "noimage.png";
                 if(car.ImageUpload != null)
                 {
-                    string uploadsDir = Path.Combine(webHostEnvironment.WebRootPath, "media/cars");
+                    string uploadsDir = Path.Combine(webHostEnvironment.WebRootPath, "/media/cars");
                     //if we upload the same pic it is not gonna allow us
                     imageName = Guid.NewGuid().ToString() + "_" + car.ImageUpload.FileName;
                     string filePath = Path.Combine(uploadsDir, imageName);
@@ -154,6 +159,7 @@ namespace DristRent.Areas.Admin
                 {
                     _context.Update(car);
                     await _context.SaveChangesAsync();
+                    TempData["Success"] = "Car has been edited! ";
                 }
                 catch (DbUpdateConcurrencyException)
                 {
