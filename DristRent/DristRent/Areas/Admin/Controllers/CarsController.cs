@@ -69,9 +69,7 @@ namespace DristRent.Areas.Admin
             return View();
         }
 
-        // POST: Admin/Cars/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
-        // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+        
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create(Car car)  
@@ -88,8 +86,6 @@ namespace DristRent.Areas.Admin
                     FileStream fs = new FileStream(filePath, FileMode.Create);
                     await car.ImageUpload.CopyToAsync(fs);
                     fs.Close();
-
-                   
                 }
                 car.Image = imageName;
 
@@ -123,40 +119,39 @@ namespace DristRent.Areas.Admin
         }
 
         // POST: Admin/Cars/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
-        // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+        
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,City,Type,CategoryId,Price,PlateNum,Image")] Car car)
+        public async Task<IActionResult> Edit(int id, Car car)
         {
-            if (id != car.Id)
-            {
-                return NotFound();
-            }
+          
 
             if (ModelState.IsValid)
             {
-                try
+                string uploadsDir = Path.Combine(webHostEnvironment.WebRootPath, "media/cars");
+               
+                if (car.ImageUpload != null)
                 {
-                    _context.Update(car);
-                    await _context.SaveChangesAsync();
-                    TempData["Success"] = "Car has been edited! ";
+                    
+                    string imageName = Guid.NewGuid().ToString() + "_" + car.ImageUpload.FileName;
+                    string filePath = Path.Combine(uploadsDir, imageName);
+                    FileStream fs = new FileStream(filePath, FileMode.Create);
+                    await car.ImageUpload.CopyToAsync(fs);
+                    fs.Close();
+                    car.Image = imageName;
                 }
-                catch (DbUpdateConcurrencyException)
-                {
-                    if (!CarExists(car.Id))
-                    {
-                        return NotFound();
-                    }
-                    else
-                    {
-                        throw;
-                    }
-                }
+                
+
+                _context.Update(car);
+
+                await _context.SaveChangesAsync();
+
+                TempData["Success"] = "The car has been Edited! ";
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["CategoryId"] = new SelectList(_context.Categories, "Id", "Name", car.CategoryId);
+
             return View(car);
+            
         }
 
         // GET: Admin/Cars/Delete/5
