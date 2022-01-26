@@ -1,4 +1,6 @@
 ﻿using DristRent.Data;
+using DristRent.Infrastructure;
+using DristRent.Models;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -16,9 +18,17 @@ namespace DristRent.Controllers
         {
             _context = context;
         }
+        //Get /booked
         public IActionResult Index()
         {
-            return View();
+            List<BookedItem> booked = HttpContext.Session.GetJson<List<BookedItem>>("Booked") ?? new List<BookedItem>();
+
+            BookingViewModel bookingVM = new BookingViewModel
+            {
+                BookedItems = booked,
+                Total = booked.Sum(x => x.Price * x.Quantity)
+        };
+            return View(bookingVM);
         }
     }
 }
