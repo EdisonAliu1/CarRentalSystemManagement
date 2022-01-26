@@ -2422,3 +2422,4 @@ C:\Users\RYZEN\source\repos\CarRentalSystemManagement\DristRent\DristRent\obj\De
 C:\Users\RYZEN\source\repos\CarRentalSystemManagement\DristRent\DristRent\obj\Debug\netcoreapp3.1\DristRent.csproj.AssemblyReference.cache
 C:\Users\krasn\Source\Repos\CarRentalSystemManagement2\DristRent\DristRent\obj\Debug\netcoreapp3.1\DristRent.csproj.AssemblyReference.cache
 C:\Users\krasn\Source\Repos\CarRentalSystemManagement2\DristRent\DristRent\obj\Debug\netcoreapp3.1\Razor\Views\Pages\Page.cshtml.g.cs
+C:\Users\krasn\Source\Repos\CarRentalSystemManagement2\DristRent\DristRent\obj\Debug\netcoreapp3.1\Razor\Views\Shared\Components\MainMenu\Default.cshtml.g.cs
