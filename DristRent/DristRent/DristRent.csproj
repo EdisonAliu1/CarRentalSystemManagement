@@ -6,13 +6,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="Controllers\**" />
-    <Content Remove="Controllers\**" />
-    <EmbeddedResource Remove="Controllers\**" />
-    <None Remove="Controllers\**" />
-  </ItemGroup>
-
-  <ItemGroup>
     <Compile Remove="Data\Migrations\20220116020721_InitialMigrate.cs" />
     <Compile Remove="Data\Migrations\20220116020721_InitialMigrate.Designer.cs" />
     <Compile Remove="Data\Migrations\20220116021012_InitialMigrat.cs" />
