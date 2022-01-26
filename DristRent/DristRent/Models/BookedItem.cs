@@ -9,18 +9,22 @@ namespace DristRent.Models
     {
         public int CarId { get; set; }
         public string CarType { get; set; }
-        public int Quantity { get; set; }
+        public int Days { get; set; }
         public decimal Price { get; set; }
-        public decimal Total { get{ return Quantity * Price;} }
+        public decimal Total { get{ return Days * Price;} }
         public string Image { get; set; }
         //public date
-
+        public BookedItem()
+        {
+            
+        }
         public BookedItem(Car car)
         {
             CarId = car.Id;
             CarType = car.Type;
-            Quantity = 1;
+            Days = 1;
             Image = car.Image;
+            
         }
     }
 }

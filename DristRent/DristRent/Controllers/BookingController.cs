@@ -26,9 +26,30 @@ namespace DristRent.Controllers
             BookingViewModel bookingVM = new BookingViewModel
             {
                 BookedItems = booked,
-                Total = booked.Sum(x => x.Price * x.Quantity)
+                Total = booked.Sum(x => x.Price * x.Days)
         };
             return View(bookingVM);
+        }
+
+        //Get/booked/add/5
+        public async Task<IActionResult> Add(int id)
+        {
+            Car car = await _context.Cars.FindAsync(id);
+
+            List<BookedItem> booked = HttpContext.Session.GetJson<List<BookedItem>>("Booked") ?? new List<BookedItem>();
+
+            BookedItem bookedItem = booked.Where(x => x.CarId == id).FirstOrDefault();
+
+            if(bookedItem == null)
+            {
+                booked.Add(new BookedItem(car));
+            }
+            else
+            {
+                bookedItem.Days += 1;
+            }
+            HttpContext.Session.SetJson("Booked", booked);
+            return RedirectToAction(nameof(Index));
         }
     }
 }
