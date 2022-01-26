@@ -66,6 +66,11 @@ namespace DristRent
                     defaults: new {controller = "Pages", action = "Page"}
                 );
                 endpoints.MapControllerRoute(
+                    "cars",
+                    "cars/{categorySlug}",
+                    defaults: new {controller = "Cars", action = "CarsByCategory"}
+                );
+                endpoints.MapControllerRoute(
                      name: "areas",
                      pattern: "{area:exists}/{controller=Pages}/{action=Index}/{id?}"
                  );

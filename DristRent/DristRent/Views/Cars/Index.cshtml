@@ -7,21 +7,27 @@
 <h1 class="display-4 pb-5">All Cars</h1>
 
 <div class="row">
-    @foreach(var item in Model)
-            {
-    <div class="col-4">
-        <img src="~/media/cars/@item.Image" class="img-fluid" />
-        <h4>Car Type</h4>
-        <div>
-            @Html.Raw(item.City)
-        </div>
-        <p>
-            @item.Price.ToString("C2")
-        </p>
-        <p>
-            <a href="#" class="btn btn-primary">Book now</a>
-        </p>
+    @foreach (var item in Model)
+    {
+        <div class="col-4">
+            <img src="~/media/cars/@item.Image" class="img-fluid" />
+            <h4>@item.Type</h4>
+            <div>
+                @Html.Raw(item.City)
+            </div>
+            <p>
+                @item.Price.ToString("C2")
+            </p>
+            <p>
+                <a href="#" class="btn btn-primary">Book now</a>
+            </p>
 
+        </div>
+    }
+    @if (ViewBag.TotalPages > 1)
+    {
+        <div class="d-flex w-100 justify-content-center ">
+            <pagination page-count="@ViewBag.TotalPages" page-target="/cars" page-number="@ViewBag.PageNumber" page-range="ViewBag.PageRange"></pagination>
+        </div>
+    }
     </div>
-            }
-</div>
