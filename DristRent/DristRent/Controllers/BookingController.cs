@@ -31,6 +31,54 @@ namespace DristRent.Controllers
             return View(bookingVM);
         }
 
+        //Get /booking/decrease/5
+        public IActionResult Decrease(int id)
+        { 
+
+            List<BookedItem> booked = HttpContext.Session.GetJson<List<BookedItem>>("Booked");
+
+            BookedItem bookedItem = booked.Where(x => x.CarId == id).FirstOrDefault();
+
+            if (bookedItem.Days > 1)
+            {
+                --bookedItem.Days;
+              
+            }
+            else
+            {
+                booked.RemoveAll(x => x.CarId == id);
+            }
+           
+
+            if(booked.Count == 0)
+            {
+                HttpContext.Session.Remove("Booked");
+            }
+            else
+            {
+                HttpContext.Session.SetJson("Booked", booked);
+            }
+            return RedirectToAction("Index");
+        }
+        //get /booking/remove/5
+        public IActionResult Remove(int id)
+        {
+
+            List<BookedItem> booked = HttpContext.Session.GetJson<List<BookedItem>>("Booked");
+
+                booked.RemoveAll(x => x.CarId == id);
+
+            if (booked.Count == 0)
+            {
+                HttpContext.Session.Remove("Booked");
+            }
+            else
+            {
+                HttpContext.Session.SetJson("Booked", booked);
+            }
+            return RedirectToAction("Index");
+        }
+
         //Get/booked/add/5
         public async Task<IActionResult> Add(int id)
         {
