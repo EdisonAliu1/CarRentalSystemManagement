@@ -112,7 +112,7 @@ namespace DristRent.Areas.Admin.Controllers
                 await _context.SaveChangesAsync();
                 TempData["Success"] = "The category has been edited";
 
-                return RedirectToAction("Edit", new { id });
+                return RedirectToAction(nameof(Index));
             }
 
             return View(category);

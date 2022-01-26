@@ -29,7 +29,7 @@ namespace DristRent.Areas.Admin
         // GET: Admin/Cars
         public async Task<IActionResult> Index(int p=1)
         {
-            int pageSize = 3;
+            int pageSize = 6;
             var cars = _context.Cars.OrderByDescending(x => x.Id)
                 .Include(c => c.category)
                 .Skip((p - 1) * pageSize)
