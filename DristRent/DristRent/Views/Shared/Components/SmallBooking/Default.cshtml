@@ -1,0 +1,16 @@
+﻿@model SmallBookingViewModel
+
+@if (Model != null)
+{
+    <p>Items Booked : <span class="badge badge-primary">@Model.NumberOfItems</span></p>
+    <p>Total: <b>@Model.TotalAmount.ToString("C2")</b></p>
+    <a class="btn btn-primary mb-2" asp-controller="Booked" asp-action="Index">View Booked Vehicles</a>
+    <br />
+    <a class="btn btn-danger " asp-controller="Booked" asp-action="Clear">Clear All</a>
+    
+
+}
+else
+{
+    <p class="lead m-0">Your Cart is empty</p>
+}

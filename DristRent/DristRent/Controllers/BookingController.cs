@@ -97,7 +97,10 @@ namespace DristRent.Controllers
                 bookedItem.Days += 1;
             }
             HttpContext.Session.SetJson("Booked", booked);
-            return RedirectToAction(nameof(Index));
+            if (HttpContext.Request.Headers["X-Requested-With"] != "XMLHttpRequest")
+                return RedirectToAction(nameof(Index));
+            return ViewComponent("SmallBooking");
+            
         }
     }
 }
