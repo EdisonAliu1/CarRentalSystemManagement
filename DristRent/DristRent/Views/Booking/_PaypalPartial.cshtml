@@ -1,0 +1,26 @@
+﻿@{ 
+    int count = 1;
+}
+<form class="paypalform" action="https://www.sandbox.paypal.com/cgi-bin/webscr" method="post">
+    <input type="hidden" name="cmd" value="_cart">
+    <input type="hidden" name="upload" value="1">
+    <input type="hidden" name="business" value="sb-tbbez12552831@personal.example.com">
+
+    @foreach (var item in Model)
+    {
+        <input type="hidden" name="item_name_@count" value="@item.CarType">
+        <input type="hidden" name="amount_@count" value="@item.Price">
+        <input type="hidden" name="quantity_@count" value="@item.Days">
+        count++;
+
+    }
+
+    @*<input type="hidden" name="item_name_1" value="Item Name 1">*@
+    <!--<input type="hidden" name="amount_1" value="1.00">
+    <input type="hidden" name="shipping_1" value="1.75">
+    <input type="hidden" name="item_name_2" value="Item Name 2">-->
+    @*<input type="hidden" name="amount_2" value="2.00">*@
+    <input type="hidden" name="currency_code" value="USD">
+    <input type="image" name="submit" src="http://www.paypal.com/en_US/i/btn/x-click-but01.gif" alt="Make payments with PayPal - it's fast, free and secure!">
+   @* <input type="submit" value="PayPal">*@
+</form>

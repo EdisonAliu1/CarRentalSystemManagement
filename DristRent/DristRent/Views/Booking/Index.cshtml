@@ -8,43 +8,66 @@
 @if (Model.BookedItems.Count > 0)
 {
     <h1>Bookings overview</h1>
-    <table class="table">
-        <tr>
-            <th>Car</th>
-            <th>Days</th>
-            <th></th>
-            <th>Price</th>
-            <th>Total</th>
-          
-        </tr>
-        @foreach(var item in Model.BookedItems)
-                {
-                    <tr>
-                        <td>@item.CarType</td>
-                        <td>@item.Days</td>
-                        <td>
-                            <a asp-action="Add" asp-route-id="@item.CarId" class="btn btn-sm btn-primary">+</a>
-                            <a asp-action="Decrease" asp-route-id="@item.CarId" class="btn btn-sm btn-success">-</a>
-                            <a asp-action="Remove" asp-route-id="@item.CarId" class="btn btn-sm btn-danger">Remove</a>
-                        </td>
-                        <td>@item.Price.ToString("C3")</td>
-                        <td>@Model.BookedItems.Where(x=> x.CarId == item.CarId).Sum(x=> x.Days * x.Price).ToString("C3")</td>
-                    </tr>
-                }
-    <tr>
-        <td class="text-right" colspan="4">Total: @Model.Total.ToString("C3")</td>
-    </tr>
-    <tr>
-        <td class="text-right" colspan="4">
-            <a asp-action="Clear" class="btn btn-danger">Remove Bookings</a>
-            <a href="#" class="btn btn-primary">Checkout</a>
-        </td>
-    </tr>
-    </table>
- 
+    <div class="bookingWrapper ">
+        <div class="bookingbg d-none">
+            <h3 class="text-center">Redirecting you to paypal...</h3>
+            <img src="~/images/ajax-loader.gif" />
+        </div>
+        <table class="table">
+            <tr>
+                <th>Car</th>
+                <th>Days</th>
+                <th></th>
+                <th>Price</th>
+                <th>Total</th>
+
+            </tr>
+            @foreach (var item in Model.BookedItems)
+            {
+                <tr>
+                    <td>@item.CarType</td>
+                    <td>@item.Days</td>
+                    <td>
+                        <a asp-action="Add" asp-route-id="@item.CarId" class="btn btn-sm btn-primary">+</a>
+                        <a asp-action="Decrease" asp-route-id="@item.CarId" class="btn btn-sm btn-success">-</a>
+                        <a asp-action="Remove" asp-route-id="@item.CarId" class="btn btn-sm btn-danger">Remove</a>
+                    </td>
+                    <td>@item.Price.ToString("C3")</td>
+                    <td>@Model.BookedItems.Where(x => x.CarId == item.CarId).Sum(x => x.Days * x.Price).ToString("C3")</td>
+                </tr>
+            }
+            <tr>
+                <td class="text-right" colspan="4">Total: @Model.Total.ToString("C3")</td>
+            </tr>
+            <tr>
+                <td class="text-right" colspan="4">
+                    <a asp-action="Clear" class="btn btn-danger">Remove Bookings</a>
+                    <a href="#" class="btn btn-primary checkout">Checkout</a>
+                </td>
+            </tr>
+        </table>
+    </div>
 }
 else
 {
     <h3 class="display-4 text-center">You haven't booked yet.</h3>
 }
 
+<partial name="~/Views/Booking/_PaypalPartial.cshtml" for="BookedItems" />
+
+@section Scripts{
+    <script>
+    $(function () {
+        $("a.checkout").click(function (e) {
+            e.preventDefault();
+
+            $("div.bookingbg").removeClass("d-none");
+
+            $.get("/booking/clear", {}, function () {
+                $("form.paypalform").submit();
+            });
+
+        });
+    });
+    </script>
+}

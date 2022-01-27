@@ -1,7 +1,10 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\DristRent",
+    "\\DristRent\\DristRent",
+    "\\DristRent\\DristRent\\Models"
   ],
-  "SelectedNode": "\\DristRent.sln",
+  "SelectedNode": "\\DristRent\\DristRent\\Models\\BookedItem.cs",
   "PreviewInSolutionExplorer": false
 }

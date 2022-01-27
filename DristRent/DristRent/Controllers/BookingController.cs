@@ -102,5 +102,17 @@ namespace DristRent.Controllers
             return ViewComponent("SmallBooking");
             
         }
+        //get /cars/clear
+        public IActionResult Clear()
+        {
+            HttpContext.Session.Remove("Booked");
+            //1.return RedirectToAction("Page", "Pages");
+            // 2.return Redirect("/");
+            // The second line redirects to the same page where the action takes place
+            if (HttpContext.Request.Headers["X-Requested-With"] != "XMLHttpRequest")
+                return Redirect(Request.Headers["Referer"].ToString());
+           
+            return Ok();
+        }
     }
 }

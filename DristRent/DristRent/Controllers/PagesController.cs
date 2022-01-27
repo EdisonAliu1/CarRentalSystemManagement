@@ -23,7 +23,9 @@ namespace DristRent.Controllers
             {
                 return View(await _context.Pages.Where(x => x.Slug == "home").FirstOrDefaultAsync());
             }
+             
             Page page = await _context.Pages.Where(x => x.Slug == slug).FirstOrDefaultAsync();
+            
             if(page == null)
             {
                 return NotFound();
