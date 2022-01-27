@@ -76,7 +76,7 @@ namespace DristRent.Controllers
             {
                 HttpContext.Session.SetJson("Booked", booked);
             }
-            return RedirectToAction("Index");
+            return RedirectToAction(nameof(Index));
         }
 
         //Get/booked/add/5

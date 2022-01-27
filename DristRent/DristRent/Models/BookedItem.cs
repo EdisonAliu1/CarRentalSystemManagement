@@ -20,6 +20,7 @@ namespace DristRent.Models
         }
         public BookedItem(Car car)
         {
+            Price = car.Price;
             CarId = car.Id;
             CarType = car.Type;
             Days = 1;
