@@ -1,6 +1,7 @@
 ﻿using DristRent.Data;
 using DristRent.Infrastructure;
 using DristRent.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -9,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace DristRent.Controllers
 {
-    
+    [Authorize ]
     public class BookingController : Controller
     {
         private readonly ApplicationDbContext _context;

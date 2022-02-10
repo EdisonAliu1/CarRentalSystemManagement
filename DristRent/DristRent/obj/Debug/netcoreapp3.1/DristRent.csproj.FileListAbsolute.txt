@@ -2432,7 +2432,6 @@ C:\Users\krasn\Source\Repos\CarRentalSystemManagement2\DristRent\DristRent\obj\D
 C:\Users\krasn\Source\Repos\CarRentalSystemManagement2\DristRent\DristRent\obj\Debug\netcoreapp3.1\Razor\Views\Booking\Index.cshtml.g.cs
 C:\Users\RYZEN\Source\Repos\CarRentalSystemManagement\DristRent\DristRent\obj\Debug\netcoreapp3.1\Razor\Views\Booking\Index.cshtml.g.cs
 C:\Users\RYZEN\Source\Repos\CarRentalSystemManagement\DristRent\DristRent\obj\Debug\netcoreapp3.1\Razor\Views\Shared\Components\Categories\Default.cshtml.g.cs
-C:\Users\RYZEN\Source\Repos\CarRentalSystemManagement\DristRent\DristRent\obj\Debug\netcoreapp3.1\DristRent.csproj.AssemblyReference.cache
 C:\Users\krasn\Source\Repos\CarRentalSystemManagement2\DristRent\DristRent\obj\Debug\netcoreapp3.1\Razor\Views\Shared\Components\SmallBooking\Default.cshtml.g.cs
 C:\Users\RYZEN\source\repos\CarRentalSystemManagement\DristRent\DristRent\obj\Debug\netcoreapp3.1\Razor\Views\Shared\Components\SmallBooking\Default.cshtml.g.cs
 C:\Users\RYZEN\source\repos\CarRentalSystemManagement\DristRent\DristRent\obj\Debug\netcoreapp3.1\Razor\Areas\Identity\Pages\Account\Login.cshtml.g.cs
@@ -2446,3 +2445,9 @@ C:\Users\krasn\Source\Repos\CarRentalSystemManagement2\DristRent\DristRent\obj\D
 C:\Users\krasn\Source\Repos\CarRentalSystemManagement2\DristRent\DristRent\obj\Debug\netcoreapp3.1\Razor\Areas\Identity\Pages\_ValidationScriptsPartial.cshtml.g.cs
 C:\Users\krasn\Source\Repos\CarRentalSystemManagement2\DristRent\DristRent\obj\Debug\netcoreapp3.1\Razor\Areas\Identity\Pages\_ViewImports.cshtml.g.cs
 C:\Users\krasn\Source\Repos\CarRentalSystemManagement2\DristRent\DristRent\obj\Debug\netcoreapp3.1\Razor\Views\Booking\_PaypalPartial.cshtml.g.cs
+C:\Users\RYZEN\source\repos\CarRentalSystemManagement\DristRent\DristRent\obj\Debug\netcoreapp3.1\Razor\Views\Booking\_PaypalPartial.cshtml.g.cs
+C:\Users\RYZEN\source\repos\CarRentalSystemManagement\DristRent\DristRent\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\Users\Index.cshtml.g.cs
+C:\Users\RYZEN\source\repos\CarRentalSystemManagement\DristRent\DristRent\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\Roles\Index.cshtml.g.cs
+C:\Users\RYZEN\source\repos\CarRentalSystemManagement\DristRent\DristRent\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\Roles\Create.cshtml.g.cs
+C:\Users\RYZEN\source\repos\CarRentalSystemManagement\DristRent\DristRent\obj\Debug\netcoreapp3.1\DristRent.csproj.AssemblyReference.cache
+C:\Users\RYZEN\source\repos\CarRentalSystemManagement\DristRent\DristRent\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\Roles\Edit.cshtml.g.cs
