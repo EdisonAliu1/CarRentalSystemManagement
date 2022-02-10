@@ -1,15 +1,27 @@
-﻿@model IEnumerable<Car>
+﻿@model PaginatedList<DristRent.Models.Car>
 
-@{ 
+@{
     ViewData["Title"] = "Cars";
 }
 
 <h1 class="display-4 pb-5">All Cars</h1>
+@* as *@
+<form asp-action="Index" method="get">
+    <div class="form-actions no-color">
+        <p>
 
+
+            <input type="text" name="SearchString" value="@ViewData["CurrentFilter"]" />
+            <input placeholder="Search" type="submit" value="Search" class="btn btn-default bg-success" /> |
+            <a asp-action="Index">Back to Full List</a>
+        </p>
+    </div>
+</form>
+@*  sa*@
 <div class="row">
     @foreach (var item in Model)
     {
-    <div class="col-4">
+        <div class="col-4">
             <div class="ajaxbg d-none">
                 <img src="~/images/ajax-loader.gif" />
                 <p class="lead alert alert-success text-center d-none">
@@ -17,7 +29,9 @@
                 </p>
             </div>
             <img src="~/media/cars/@item.Image" class="img-fluid" />
-            <h4>@item.Type</h4>
+            <h4 asp-action="Index" asp-route-sortOrder="@ViewData["NameSortParm"]" asp-route-currentFilter="@ViewData["CurrentFilter"]">
+                @item.Type
+            </h4>
             <div>
                 @Html.Raw(item.City)
             </div>
@@ -29,38 +43,53 @@
             </p>
 
         </div>
-        }
-        @if (ViewBag.TotalPages > 1)
-        {
-            <div class="d-flex w-100 justify-content-center ">
-                <pagination page-count="@ViewBag.TotalPages" page-target="/cars" page-number="@ViewBag.PageNumber" page-range="ViewBag.PageRange"></pagination>
-            </div>
-        }
-    </div>
-@section Scripts{ 
-<script>
-    $(function () {
-        $("a.bookNow").click(function (e) {
-            e.preventDefault();
-            let ajaxDiv = $(this).parent().parent().find("div.ajaxbg");
-            ajaxDiv.removeClass("d-none");
-            let id = $(this).data("id");
+    }
+    
+</div>
 
-            $.get('/booking/add/' + id, {}, function (data) {
-                $("div.smallbooking").html(data);
-                ajaxDiv.find("img").addClass("d-none");
-                ajaxDiv.find("p").removeClass("d-none");
-                setTimeout(() => {
-                    ajaxDiv.animate({ opacity: 0 }, function () {
-                        $(this).addClass("d-none").fadeTo(.1, 1);
-                        $(this).find("img").removeClass("d-none");
-                        $(this).find("p").addClass("d-none");
+@{
+    var prevDisabled = !Model.HasPreviousPage ? "disabled" : "";
+    var nextDisabled = !Model.HasNextPage ? "disabled" : "";
+}
+
+<a asp-action="Index"
+   asp-route-sortOrder="@ViewData["CurrentSort"]"
+   asp-route-pageNumber="@(Model.PageIndex - 1)"
+   asp-route-currentFilter="@ViewData["CurrentFilter"]"
+   class="btn btn-default @prevDisabled">
+    Previous
+</a>
+<a asp-action="Index"
+   asp-route-sortOrder="@ViewData["CurrentSort"]"
+   asp-route-pageNumber="@(Model.PageIndex + 1)"
+   asp-route-currentFilter="@ViewData["CurrentFilter"]"
+   class="btn btn-default @nextDisabled">
+    Next
+</a>
+@section Scripts{
+    <script>
+        $(function () {
+            $("a.bookNow").click(function (e) {
+                e.preventDefault();
+                let ajaxDiv = $(this).parent().parent().find("div.ajaxbg");
+                ajaxDiv.removeClass("d-none");
+                let id = $(this).data("id");
+
+                $.get('/booking/add/' + id, {}, function (data) {
+                    $("div.smallbooking").html(data);
+                    ajaxDiv.find("img").addClass("d-none");
+                    ajaxDiv.find("p").removeClass("d-none");
+                    setTimeout(() => {
+                        ajaxDiv.animate({ opacity: 0 }, function () {
+                            $(this).addClass("d-none").fadeTo(.1, 1);
+                            $(this).find("img").removeClass("d-none");
+                            $(this).find("p").addClass("d-none");
+                        });
                     });
+
                 });
 
             });
-
         });
-    });
-</script>
-    }
+    </script>
+}

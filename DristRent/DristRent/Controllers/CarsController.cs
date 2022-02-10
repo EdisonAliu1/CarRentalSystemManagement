@@ -19,20 +19,45 @@ namespace DristRent.Controllers
             _context = context;
 
         }
-        public async Task<IActionResult> Index(int p = 1)
+
+        public async Task<IActionResult> Index(string sortOrder, string currentFilter, string searchString, int? pageNumber)
         {
-            int pageSize = 6;
-            var cars = _context.Cars.OrderByDescending(x => x.Id)              
-                .Skip((p - 1) * pageSize)
-                .Take(pageSize);
+            ViewData["CurrentSort"] = sortOrder;
+            ViewData["NameSortParm"] = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
 
-            ViewBag.PageNumber = p;
-            ViewBag.PageRange = pageSize;
-            ViewBag.TotalPages = (int)Math.Ceiling((decimal)_context.Cars.Count() / pageSize);
+            if (searchString != null)
+            {
+                pageNumber = 1;
+            }
+            else
+            {
+                searchString = currentFilter;
+            }
+            ViewData["CurrentFilter"] = searchString;
 
+            var car = from s in _context.Cars select s;
 
-            return View(await cars.ToListAsync());
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                car = car.Where(s => s.City.Contains(searchString)
+                    || s.Type.Contains(searchString));
+            }
+            switch (sortOrder)
+            {
+                case "name_desc":
+                    car = car.OrderByDescending(s => s.Type);
+                    break;
+              
+                default:
+                    car = car.OrderBy(s => s.Type);
+                    break;
+            }
+
+            int pageSize = 3;
+            return View(await PaginatedList<Car>.CreateAsync(car.AsNoTracking(), pageNumber ?? 1, pageSize));
+            
         }
+
         //Get /Products/Category
         public async Task<IActionResult> CarsByCategory(string categorySlug, int p = 1)
         {

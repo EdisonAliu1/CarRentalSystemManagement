@@ -32,12 +32,12 @@
                         <a asp-action="Decrease" asp-route-id="@item.CarId" class="btn btn-sm btn-success">-</a>
                         <a asp-action="Remove" asp-route-id="@item.CarId" class="btn btn-sm btn-danger">Remove</a>
                     </td>
-                    <td>@item.Price.ToString("C3")</td>
-                    <td>@Model.BookedItems.Where(x => x.CarId == item.CarId).Sum(x => x.Days * x.Price).ToString("C3")</td>
+                    <td>@item.Price.ToString("C2")</td>
+                    <td>@Model.BookedItems.Where(x => x.CarId == item.CarId).Sum(x => x.Days * x.Price).ToString("C2")</td>
                 </tr>
             }
             <tr>
-                <td class="text-right" colspan="4">Total: @Model.Total.ToString("C3")</td>
+                <td class="text-right" colspan="4">Total: @Model.Total.ToString("C2")</td>
             </tr>
             <tr>
                 <td class="text-right" colspan="4">

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -10,6 +11,8 @@ namespace DristRent.Models
         public int CarId { get; set; }
         public string CarType { get; set; }
         public int Days { get; set; }
+
+        //[DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:c}")]
         public decimal Price { get; set; }
         public decimal Total { get{ return Days * Price;} }
         public string Image { get; set; }

@@ -27,30 +27,49 @@ namespace DristRent.Areas.Admin
         }
 
         // GET: Admin/Cars
-        public async Task<IActionResult> Index(int p=1)
+        public async Task<IActionResult> Index(string sortOrder, string currentFilter, string searchString, int? pageNumber /*int p = 1*/)
         {
-            int pageSize = 6;
-            var cars = _context.Cars.OrderByDescending(x => x.Id)
-                .Include(c => c.category)
-                .Skip((p - 1) * pageSize)
-                .Take(pageSize);
+            ViewData["CurrentSort"] = sortOrder;
+            ViewData["NameSortParm"] = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
+           // ViewData["DateSortParm"] = sortOrder == "Date" ? "date_desc" : "Date";
 
-            ViewBag.PageNumber = p;
-            ViewBag.PageRange = pageSize;
-            ViewBag.TotalPages = (int)Math.Ceiling((decimal)_context.Cars.Count() / pageSize);
-          
-          
-            return View(await cars.ToListAsync());
+            if (searchString != null)
+            {
+                pageNumber = 1;
+            }
+            else
+            {
+                searchString = currentFilter;
+            }
+            ViewData["CurrentFilter"] = searchString;
+
+            var car = from s in _context.Cars select s;
+
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                car = car.Where(s => s.City.Contains(searchString)
+                    || s.Type.Contains(searchString));
+            }
+            switch (sortOrder)
+            {
+                case "name_desc":
+                    car = car.OrderByDescending(s => s.Type);
+                    break;
+              
+                default:
+                    car = car.OrderBy(s => s.Type);
+                    break;
+            }
+
+            int pageSize = 3;
+            return View(await PaginatedList<Car>.CreateAsync(car.AsNoTracking(), pageNumber ?? 1, pageSize));
+            //return View(await car.ToListAsync());
         }
 
         // GET: Admin/Cars/Details/5
         public async Task<IActionResult> Details(int id)
         {
-            //if (id == null)
-            //{
-            //    return NotFound();
-            //}
-
+          
             var car = await _context.Cars
                 .Include(c => c.category)
                 .FirstOrDefaultAsync(m => m.Id == id);
@@ -127,6 +146,7 @@ namespace DristRent.Areas.Admin
           
 
             if (ModelState.IsValid)
+
             {
                 string uploadsDir = Path.Combine(webHostEnvironment.WebRootPath, "media/cars");
                
@@ -189,4 +209,6 @@ namespace DristRent.Areas.Admin
             return _context.Cars.Any(e => e.Id == id);
         }
     }
+
+
 }
