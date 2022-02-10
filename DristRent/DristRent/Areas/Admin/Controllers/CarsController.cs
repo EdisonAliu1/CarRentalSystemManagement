@@ -12,9 +12,11 @@ using DristRent.Infrastructure;
 using System.IO;
 
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Authorization;
 
 namespace DristRent.Areas.Admin
 {
+    [Authorize(Roles = "Admin")]
     [Area("Admin")]
     public class CarsController : Controller
     {

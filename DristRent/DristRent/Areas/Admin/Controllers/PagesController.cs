@@ -7,9 +7,11 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using DristRent.Data;
 using DristRent.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace DristRent.Areas.Admin.Controllers
 {
+    [Authorize(Roles = "Admin,editor")]
     [Area("Admin")]
     public class PagesController : Controller
     {
