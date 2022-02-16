@@ -20,11 +20,12 @@ namespace DristRent.Controllers
 
         }
 
-        public async Task<IActionResult> Index(string sortOrder, string currentFilter, string searchString, int? pageNumber)
+        public async Task<IActionResult> Index(/*string selectOption,*/ string sortOrder, string currentFilter, string searchString, int? pageNumber)
         {
             ViewData["CurrentSort"] = sortOrder;
             ViewData["NameSortParm"] = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
 
+           
             if (searchString != null)
             {
                 pageNumber = 1;
@@ -37,7 +38,23 @@ namespace DristRent.Controllers
 
             var car = from s in _context.Cars select s;
 
-            if (!String.IsNullOrEmpty(searchString))
+
+            //
+
+            //if (!String.IsNullOrEmpty(searchString))
+            //{
+            //    switch (selectOption)
+            //    {
+            //        case "Type":
+            //            car = car.Where(a =>
+            //                a.Type.ToLower().Contains(searchString.ToLower()));
+            //            break;
+
+            //    }
+            //}
+                //
+
+                if (!String.IsNullOrEmpty(searchString))
             {
                 car = car.Where(s => s.City.Contains(searchString)
                     || s.Type.Contains(searchString));

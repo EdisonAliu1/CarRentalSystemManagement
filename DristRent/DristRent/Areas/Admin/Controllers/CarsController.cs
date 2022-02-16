@@ -33,7 +33,7 @@ namespace DristRent.Areas.Admin
         {
             ViewData["CurrentSort"] = sortOrder;
             ViewData["NameSortParm"] = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
-           // ViewData["DateSortParm"] = sortOrder == "Date" ? "date_desc" : "Date";
+           
 
             if (searchString != null)
             {
@@ -65,7 +65,7 @@ namespace DristRent.Areas.Admin
 
             int pageSize = 3;
             return View(await PaginatedList<Car>.CreateAsync(car.AsNoTracking(), pageNumber ?? 1, pageSize));
-            //return View(await car.ToListAsync());
+            
         }
 
         // GET: Admin/Cars/Details/5
@@ -162,7 +162,6 @@ namespace DristRent.Areas.Admin
                     fs.Close();
                     car.Image = imageName;
                 }
-                
 
                 _context.Update(car);
 
@@ -211,6 +210,5 @@ namespace DristRent.Areas.Admin
             return _context.Cars.Any(e => e.Id == id);
         }
     }
-
 
 }

@@ -3,8 +3,12 @@
     "",
     "\\DristRent",
     "\\DristRent\\DristRent",
+    "\\DristRent\\DristRent\\Areas",
+    "\\DristRent\\DristRent\\Areas\\Admin",
+    "\\DristRent\\DristRent\\Areas\\Admin\\Views",
+    "\\DristRent\\DristRent\\Areas\\Admin\\Views\\Cars",
     "\\DristRent\\DristRent\\Models"
   ],
-  "SelectedNode": "\\DristRent\\DristRent\\Models\\BookedItem.cs",
+  "SelectedNode": "\\DristRent\\DristRent\\Areas\\Admin\\Views\\Cars\\Index.cshtml",
   "PreviewInSolutionExplorer": false
 }

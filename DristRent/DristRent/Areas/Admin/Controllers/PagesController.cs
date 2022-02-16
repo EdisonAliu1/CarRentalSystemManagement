@@ -105,9 +105,9 @@ namespace DristRent.Areas.Admin.Controllers
         {
             if (ModelState.IsValid)
             {
-                page.Slug =page.Id ==1 ? "home": page.Title.ToLower().Replace(" ", "-");
+                page.Slug =page.Id == 0 ? "home": page.Title.ToLower().Replace(" ", "-");
                
-                var slug = await _context.Pages.Where(x => x.Id == page.Id).FirstOrDefaultAsync(x => x.Slug == page.Slug);
+                var slug = await _context.Pages.Where(x => x.Id != page.Id).FirstOrDefaultAsync(x => x.Slug == page.Slug);
                 if (slug != null)
                 {
                     ModelState.AddModelError("", "The title already exists. ");
